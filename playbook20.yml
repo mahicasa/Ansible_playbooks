@@ -1,0 +1,17 @@
+---
+- name: Check if a directory is present
+  hosts: all
+  tasks:
+   - name: check for a directory
+     stat:
+      path: /root/dir11
+     register: a
+   - name: display the output
+     debug: 
+      var: a
+   - name: Create a file called dir1
+     file: 
+      name: dir1
+      state: touch
+     when: a.stat.exists == false
+...

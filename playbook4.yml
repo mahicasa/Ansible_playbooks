@@ -1,0 +1,26 @@
+---
+- name: Configuring the Tomcat8
+  hosts: all
+  tasks:
+   - name: Install the tomcat
+     apt:
+      name: tomcat8
+      state: present
+   - name: Copy the tomcat users file
+     copy:
+      src: /root/tomcat-users.xml
+      dest: /etc/tomcat8
+   - name: restart tomcat8
+     service: 
+      name: tomcat8
+      start: restarted
+   - name: Check the url response of server1
+     uri:
+      url: http://192.168.50.3:8080 
+      status_code: 200
+   - name: Check the url response of server2
+     uri:
+      url: http://192.168.50.4:8080
+      status_code: 200
+
+...   

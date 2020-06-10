@@ -1,0 +1,24 @@
+---
+- name: creating the users and files/dire's in users home directory
+  hosts: all
+  tasks: 
+   - name: Creating the users
+     user:
+      name: "{{item.a}}"
+      password: "{{item.b}}"
+      home: "{{item.c}}"
+     with_items:
+      - {a: ktuser1,b: london145,c: /home/ktuser1}
+      - {a: ktuser2,b: london145,c: /home/ktuser2}
+   - name: Creating the files and dires in users home directory
+     file:
+      name: "{{item.a}}"
+      state: "{{item.b}}"
+      owner: "{{item.c}}"
+      group: "{{item.d}}"
+     with_items:
+      - {a: /home/ktuser1/sample1,b: touch,c: ktuser1,d: ktuser2}
+      - {a: /home/ktuser2/dir1,b: directory,c: ktuser2,d: ktuser2}
+
+...
+

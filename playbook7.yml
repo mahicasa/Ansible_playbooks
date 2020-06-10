@@ -1,0 +1,16 @@
+---
+- name: Installing the Softwares
+  hosts: all
+  vars: 
+   - a: openjdk-8-jdk
+   - b: absent
+   - c: yes
+  tasks:
+   - name: Installing the java
+     apt:
+      name: "{{a}}"
+      state: "{{b}}"
+      update_cache: "{{c}}"
+   
+...
+

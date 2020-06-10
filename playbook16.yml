@@ -1,0 +1,20 @@
+---
+- name: Error handling
+  hosts: all
+  tasks:
+   - block:
+      - name: Install tomcat7
+        apt:
+         name: tomcat7
+         state: present
+     rescue:
+      - name: Install tomcat8
+        apt:
+         name: tomcat7
+         state: present 
+     always:
+      - name: Restart tomcat8
+        service:
+         name: tomcat7
+         state: restarted
+...

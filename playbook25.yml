@@ -1,0 +1,13 @@
+---
+- name: Converting the 2 adhoc commands into a single playbook
+  hosts: all
+  tasks:
+   - name: Creating the Directory
+     file:
+      name: /opt/data
+      state: directory
+   - name: Copy the content into file
+     copy:
+      content: "TopSecret\n"
+      dest: /opt/data/secret.txt
+...   

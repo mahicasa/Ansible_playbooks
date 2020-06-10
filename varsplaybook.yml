@@ -1,0 +1,20 @@
+---
+- name: Creating the users from the vars files
+  hosts: all
+  vars_files:
+  - vars/users.yaml
+  tasks:
+   - name: group exists
+     group:
+      name: "{{assignment_group}}"
+      state: present
+   - name: user exists
+     user:
+      name: "{{assignment_user_name}}"
+      uid: "{{assignment_user_id}}"
+      state: present
+      groups: "{{assignment_group}}"
+      append: yes
+...
+
+...

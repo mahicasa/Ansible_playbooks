@@ -1,0 +1,7 @@
+---
+- name: Calling the child playbooks for installing the java
+  hosts: all
+  tasks:
+   - name: Call child playbooks
+     include: playbook21.yml
+...

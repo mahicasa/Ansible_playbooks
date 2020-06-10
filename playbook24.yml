@@ -1,0 +1,22 @@
+---
+- name: Create a file, copy the content & archieve it
+  hosts: all
+  tasks:
+   - name: Copying the content
+     copy: 
+      content: "{{item.a}}"
+      dest: "{{item.b}}"
+     with_items:
+      - {a: "Welcome to hello worlds\n",b: /tmp/hello.txt}
+      - {a: "Welcome to hi worlds\n",b: /tmp/hi.txt}
+   - name: Compress Archive the files
+     archive: 
+      path: "{{item}}" 
+      dest: /tmp/hh.zip
+      format: zip
+     with_items: 
+      - /tmp/hello.txt
+      - /tmp/hi.txt
+...
+     
+      

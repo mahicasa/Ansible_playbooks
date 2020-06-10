@@ -1,0 +1,26 @@
+---
+- name: Configuring the apache2
+  hosts: all
+  tasks:
+   - name: Install the apache2
+     apt:
+      name: apache2
+      state: present
+   - name: Edit the index.html file
+     copy:
+      content: "Welocme to Hello World/n"
+      dest: /var/www/html/index.html
+   - name: restart tomcat8
+     service: 
+      name: apache2
+      state: restarted
+   - name: Check the url response of server1
+     uri:
+      url: http://192.168.50.3 
+      status_code: 200
+   - name: Check the url response of server2
+     uri:
+      url: http://192.168.50.4
+      status_code: 200
+
+...   

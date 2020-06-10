@@ -1,0 +1,21 @@
+---
+- name: Implementing tags
+  hosts: all
+  tasks: 
+   - name: Install tree
+     apt: 
+      name: tree
+      state: absent
+     tags: tree_installation
+   - name: Create a user
+     user:
+      name: monu
+      password: panja145
+      uid: 1757
+     tags: user_creation
+   - name: File creation
+     file: 
+      name: f122  
+      state: touch
+
+...    

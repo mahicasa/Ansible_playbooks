@@ -1,0 +1,22 @@
+
+course: EKS Course
+instructor: 
+- firstname: Abdennour
+- lastname: TOUMI
+- website: "http://kubernetes.tn"
+  
+Secions:
+- Introduction
+- Deploy EKS Cluster
+- Deploy App with Helm
+- Conclusion
+
+Lectures:
+- id: 1
+  name: introduction
+  minutes: 5
+- id: 2
+  name: EKS with Terraform 
+  minutes: 14
+
+  

@@ -1,0 +1,11 @@
+---
+- name: Installing Java using the host variables
+  hosts: webserver
+  tasks:
+   - name: Uninstalling Java
+     apt: 
+      name: "{{a}}"
+      state: "{{b}}"
+      update_cache: "{{c}}"
+
+...

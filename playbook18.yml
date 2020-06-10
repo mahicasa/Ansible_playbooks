@@ -1,0 +1,13 @@
+--- 
+- name: Creating a user and display detailed O/P
+  hosts: all
+  tasks:
+   - name: Create a user
+     user:
+      name: sonu
+      password: london145
+      uid: 1780
+     register: a
+   - name: Display the output of above module
+     debug: 
+      var: a 

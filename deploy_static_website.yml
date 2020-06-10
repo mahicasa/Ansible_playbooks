@@ -1,0 +1,20 @@
+---
+- name: Deploy a static website
+  hosts: all
+  vars:
+   webserver: nginx
+  tasks:
+   - name: Install the webserver
+     package: 
+      name: "{{webserver}}"
+      state: latest
+      update_cache: yes
+   - name: Start the webserver
+     service:
+      name: "{{ webserver}}"
+      state: started
+   - name: static website is deplpoyed
+     uri:
+      url: https://raw.githubusercontent.com/abdennour/example-static-website/ansible-course/index.html
+      dest: /var/www/html
+... 
